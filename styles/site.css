@@ -1,0 +1,144 @@
+
+
+body {
+    background-image: linear-gradient(rgba(211, 164, 198, .2 ), rgba(211, 164, 198, .5))
+}
+
+.bio {
+    font-size: 3em;
+    font-family: impact;
+    text-align: center;
+
+}
+strong{
+    font-family: impact;
+    color:rgb(212, 169, 217)
+
+}
+h1 {
+    font-style: italic;
+    font-size: 3em;
+    font-family: impact;
+    text-align: center;
+}
+
+ h2{
+    font-size: 4em;
+    font-family: impact;
+    text-align: center;
+
+ }
+
+ h3{
+    font-family: times ;
+    font-size: 2em;
+    color:rgb(5, 1, 1)
+ }
+
+ h4{
+    font-family: times;
+    text-decoration: underline;
+    color: black;
+    font-size: 150%;
+
+ }
+
+p {
+    text-align: left;
+    font-family: times;
+    font-weight: bold;
+    font-size: 130%;
+    color: rgb(6, 3, 8)
+
+
+}
+
+nav {
+    font-family: impact;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li :hover{
+    background-color: rgb(179, 209, 232);
+}
+
+nav ul li{
+    list-style:none;
+}
+
+nav ul {
+    display: inline-block;
+    list-style-type: none;
+    font-size: 1em;
+}
+
+blockquote {
+    text-align: center;
+    font-family: impact;
+    font-size: xxx-large;
+    color:rgb(0, 0, 0)
+
+ }
+.skills{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.skills_2{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.nike{
+    display:flex;
+    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+.mac{
+    display:flex;
+    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.allure{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.logo{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.isb{
+    float: right;
+}
+
+.lodi{
+    float: left;
+}
+
+.splurge{
+    float: right;
+}
+
+.my_logo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.portraits{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
