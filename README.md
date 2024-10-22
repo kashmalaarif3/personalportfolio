@@ -1,3 +1,3 @@
 # Personal Portfolio
 
-**Hi my name is Kashmala Arif** this is my personal portfolio.
+**Hi my name is Kashmala Arif** and this is my personal portfolio.
