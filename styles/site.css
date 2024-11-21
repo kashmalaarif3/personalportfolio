@@ -352,9 +352,9 @@ h4{
     text-align: center;
 }
 
-h3 a {
-
-    color: #2980b9;
+a {
+    text-decoration: none;  
+    color: inherit;
 }
 
 
