@@ -1,3 +1,12 @@
+
+
+.concert-one-regular {
+  font-family: "Concert One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 /* General Body Styles */
 body {
     background-color: #ffffff; /* Set background to white */
@@ -11,6 +20,8 @@ body {
     min-height: 100vh;
     text-align: center;
 }
+
+  
 
 /* Center Content */
 body > * {
@@ -134,7 +145,7 @@ nav ul li a:hover {
 
 /* Section Headers */
 h3 {
-    font-family: 'Segoe UI', sans-serif;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
     color: #e73c9d; /* Section header color */
     font-size: 2em; /* Slightly smaller */
     margin-bottom: 20px;
@@ -156,6 +167,22 @@ h3 {
     font-size: 1.5em; /* Slightly smaller */
     color: #2980b9; /* Skill title color */
     margin-bottom: 10px;
+}
+
+h4{
+    font-family: "Concert One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+.project h6{
+    margin-top:-.1em;
+    font-family: "Righteous", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-size:medium;
+    color: black;
 }
 
 .skill {
@@ -226,6 +253,8 @@ h3 {
 }
 
 
+
+
 /* Project Image */
 .project-image {
     width: 250px;
@@ -253,7 +282,7 @@ h3 {
 .project-details p {
     font-size: .8em; /* Slightly smaller */
     color: #000000; /* Dark gray text */
-    margin-bottom: 15px;
+    margin-top: 15px;
     text-align: left; /* Ensure paragraph is aligned to the left */
 }
 
@@ -435,9 +464,9 @@ a {
 
 
 .project-tools {
-    margin-top: 10px;
+    margin-top: 1px;
     display: flex;
-    gap: 10px;
+    gap: 5px;
     align-items: center;
 }
 
