@@ -353,8 +353,6 @@ a {
 
 
 
-
-
 /* Sticky Container for Background Effect */
 .sticky-container {
     position: sticky;
@@ -425,7 +423,7 @@ a {
 
 #contact a {
     text-decoration: none;
-    color: #e73c9d;
+    color: #000000;
     display: inline-flex;
     align-items: center;
     gap: 0.5em;
@@ -433,7 +431,7 @@ a {
 }
 
 #contact a:hover {
-    color: #ffffff; /* LinkedIn Blue as a hover example */
+    color: #5bafef; /* LinkedIn Blue as a hover example */
 }
 
 .footer {
@@ -578,7 +576,7 @@ i {
 
 .container .card .face.face2 {
     position: relative;
-    background: #e4f1fe;
+    background: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
