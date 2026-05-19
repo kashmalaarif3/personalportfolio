@@ -733,8 +733,9 @@
             text-transform: uppercase; cursor: pointer;
             font-family: 'Inter', sans-serif;
             display: none; align-items: center; gap: 7px;
+            width: fit-content; white-space: nowrap;
             box-shadow: 0 4px 16px rgba(0,0,0,0.25);
-            transition: all 0.2s;
+            transition: background 0.2s, border-color 0.2s;
         }
         #menu-btn:hover { background: var(--maroon); border-color: var(--maroon); }
         #menu-btn.show { display: flex; }
@@ -824,7 +825,7 @@
             .intro-prompt { font-size: 0.8rem; }
 
             /* Menu back button */
-            #menu-btn { top: auto; left: auto; bottom: 16px; right: 16px; font-size: 0.72rem; padding: 8px 14px; }
+            #menu-btn { display: none !important; }
 
             /* FAB */
             .fab { bottom: 16px; right: 16px; }
