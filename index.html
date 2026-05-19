@@ -621,16 +621,6 @@
         }
 
         /* ===== FAB ===== */
-        .fab {
-            position: fixed; bottom: 26px; right: 26px; z-index: 100;
-            background: var(--navy); color: white;
-            width: 50px; height: 50px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1rem; cursor: pointer; border: none;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 20px rgba(192,21,42,0.2);
-            transition: all 0.3s;
-        }
-        .fab:hover { background: var(--maroon); transform: scale(1.1) rotate(5deg); box-shadow: 0 8px 28px rgba(192,21,42,0.45); }
 
         /* ===== INTRO OVERLAY ===== */
         #intro {
@@ -828,7 +818,6 @@
             #menu-btn { display: none !important; }
 
             /* FAB */
-            .fab { bottom: 16px; right: 16px; }
 
             /* fp-row label column narrower */
             .fp-row { grid-template-columns: 54px 1fr; }
@@ -852,7 +841,7 @@
 
         @media print {
             body { background: white; padding: 0; }
-            .bg-scene, .fab, #progress, .cursor, .cursor-ring { display: none !important; }
+            .bg-scene, #progress, .cursor, .cursor-ring { display: none !important; }
             .doc { box-shadow: none; border-radius: 0; }
             .reveal { opacity: 1 !important; transform: none !important; }
             .exp-body { max-height: none !important; opacity: 1 !important; margin-top: 9px !important; }
@@ -904,7 +893,6 @@
 <div id="progress"></div>
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursor-ring"></div>
-<button class="fab" title="Print / Save as PDF" onclick="window.print()"><i class="fa-solid fa-print"></i></button>
 
 <button class="sidebar-tab" id="sidebar-tab"><i class="fa-solid fa-angles-right" id="sidebar-tab-icon"></i></button>
 
