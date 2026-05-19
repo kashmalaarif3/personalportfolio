@@ -758,23 +758,95 @@
         .rd2 { transition-delay: 0.16s; }
 
         /* ===== RESPONSIVE ===== */
+        /* ===== TABLET (≤1024px) ===== */
         @media (max-width: 1024px) {
             .proj-grid-3 { grid-template-columns: 1fr 1fr; }
+            .fp-grid { grid-template-columns: 1fr 1fr; }
+            .doc-header { padding: 40px 48px; }
+            .doc-main { padding: 36px 40px; }
         }
-        @media (max-width: 820px) {
-            body { padding: 0; background: #f7f3f0; }
+
+        /* ===== MOBILE (≤768px) ===== */
+        @media (max-width: 768px) {
+            body { padding: 0; }
             .bg-scene { display: none; }
+            .cursor, .cursor-ring { display: none; }
+
+            /* Document */
             .doc { border-radius: 0; box-shadow: none; }
-            .doc-header { grid-template-columns: 70px 1fr; padding: 28px 24px; }
+
+            /* Header: stack logo + info, hide contacts (in footer already) */
+            .doc-header {
+                grid-template-columns: 72px 1fr;
+                grid-template-rows: auto auto;
+                padding: 28px 20px 24px;
+                gap: 16px;
+            }
+            .hdr-logo { width: 72px; height: 72px; font-size: 1.7rem; border-radius: 14px; }
+            .hdr-name { font-size: clamp(1.8rem, 7vw, 2.8rem); }
+            .hdr-tagline { font-size: 0.78rem; max-width: 100%; }
             .hdr-contacts { display: none; }
+
+            /* Sidebar toggle tab: hide the fixed edge tab on mobile */
+            .sidebar-tab { display: none; }
+
+            /* Body: single column, sidebar always hidden */
             .doc-body { grid-template-columns: 1fr; }
-            .doc-sidebar { border-left: none; border-top: 4px solid var(--maroon); border-right: none; border-bottom: 1px solid var(--border); }
-            .proj-grid, .proj-grid-3 { grid-template-columns: 1fr; }
+            .doc-sidebar {
+                display: none !important;
+            }
+
+            /* Main */
+            .doc-main { padding: 24px 18px 32px; }
+
+            /* Featured project grid: single column */
+            .fp-grid { grid-template-columns: 1fr; }
+
+            /* Project grids */
+            .proj-grid,
+            .proj-grid-3 { grid-template-columns: 1fr; }
             .proj-grid-1 { max-width: 100%; }
-            .doc-main { padding: 28px 24px; }
-            .contact-section { padding: 40px 24px 36px; }
+
+            /* Section headings */
+            .sec-h { font-size: 1rem; }
+
+            /* Contact section */
+            .contact-section { padding: 36px 20px 32px; }
             .contact-cards { flex-direction: column; }
-            .contact-heading { font-size: 1.8rem; }
+            .contact-card { min-width: 0; }
+            .contact-heading { font-size: 1.7rem; }
+
+            /* Intro overlay */
+            .intro-name { font-size: clamp(2.2rem, 10vw, 4rem); }
+            .intro-sub { font-size: 0.72rem; letter-spacing: 0.12em; }
+            .intro-cards { flex-direction: column; align-items: center; gap: 12px; }
+            .icard { width: 260px; }
+            .intro-prompt { font-size: 0.8rem; }
+
+            /* Menu back button */
+            #menu-btn { bottom: 16px; right: 16px; font-size: 0.72rem; padding: 8px 14px; }
+
+            /* FAB */
+            .fab { bottom: 16px; right: 16px; }
+
+            /* fp-row label column narrower */
+            .fp-row { grid-template-columns: 54px 1fr; }
+        }
+
+        /* ===== SMALL PHONE (≤420px) ===== */
+        @media (max-width: 420px) {
+            .doc-header { grid-template-columns: 60px 1fr; padding: 20px 16px; gap: 12px; }
+            .hdr-logo { width: 60px; height: 60px; font-size: 1.4rem; border-radius: 12px; }
+            .hdr-name { font-size: 1.7rem; }
+            .hdr-title { font-size: 0.6rem; letter-spacing: 0.14em; }
+            .doc-main { padding: 18px 14px 28px; }
+            .fp-body { padding: 14px 14px 12px; }
+            .fp-name { font-size: 0.88rem; }
+            .fp-text { font-size: 0.72rem; }
+            .contact-section { padding: 28px 16px 24px; }
+            .contact-heading { font-size: 1.4rem; }
+            .intro-name { font-size: 2rem; }
+            .icard { width: 92vw; }
         }
 
         @media print {
