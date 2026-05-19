@@ -228,6 +228,41 @@
         /* ===== BODY ===== */
         .doc-body { display: grid; grid-template-columns: 320px 1fr; }
 
+        /* Projects mode: sidebar collapsible, grid uses auto column */
+        body.mode-projects .doc-body { grid-template-columns: auto 1fr; }
+        body.mode-projects .doc-sidebar {
+            width: 320px; min-width: 0; overflow: hidden;
+            transition: width 0.4s cubic-bezier(0.4,0,0.2,1),
+                        padding 0.4s cubic-bezier(0.4,0,0.2,1),
+                        opacity 0.3s ease,
+                        border-width 0.4s ease;
+        }
+        body.mode-projects .doc-sidebar.collapsed {
+            width: 0; padding-left: 0; padding-right: 0;
+            border-left-width: 0; border-right-width: 0; opacity: 0;
+        }
+
+        /* ===== SIDEBAR TOGGLE TAB (projects mode only) ===== */
+        .sidebar-tab { display: none; }
+        body.mode-projects .sidebar-tab {
+            position: fixed; top: 50%; left: 0; z-index: 100;
+            transform: translateY(-50%);
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+            width: 36px; height: 80px;
+            background: linear-gradient(180deg, var(--maroon), var(--maroon2));
+            border: none; border-radius: 0 12px 12px 0;
+            cursor: pointer; color: #fff;
+            transition: width 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 3px 0 14px rgba(192,21,42,0.35);
+        }
+        body.mode-projects .sidebar-tab:hover { width: 44px; box-shadow: 4px 0 20px rgba(192,21,42,0.5); }
+        .sidebar-tab i { font-size: 0.85rem; }
+        .sidebar-tab::after {
+            content: ''; display: block;
+            width: 3px; height: 28px; border-radius: 2px;
+            background: rgba(255,255,255,0.25);
+        }
+
         /* ===== SIDEBAR ===== */
         .doc-sidebar {
             background: var(--sidebar-bg);
@@ -887,6 +922,8 @@
 <div class="cursor-ring" id="cursor-ring"></div>
 
 
+<button class="sidebar-tab" id="sidebar-tab"><i class="fa-solid fa-angles-right" id="sidebar-tab-icon"></i></button>
+
 <div class="doc">
 
     <!-- HEADER -->
@@ -915,7 +952,7 @@
     <div class="doc-body">
 
         <!-- SIDEBAR -->
-        <aside class="doc-sidebar">
+        <aside class="doc-sidebar" id="doc-sidebar">
 
             <!-- Photo -->
             <div class="sb-photo-wrap">
@@ -1221,11 +1258,29 @@
 (function () {
     const intro   = document.getElementById('intro');
     const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.getElementById('doc-sidebar');
+    const tab     = document.getElementById('sidebar-tab');
+    const tabIcon = document.getElementById('sidebar-tab-icon');
     document.body.style.overflow = 'hidden';
 
-    function dismissIntro(targetId) {
+    function setProjectsMode() {
+        document.body.classList.add('mode-projects');
+        document.body.classList.remove('mode-resume');
+        sidebar.classList.add('collapsed');
+        tabIcon.className = 'fa-solid fa-angles-right';
+    }
+
+    function setResumeMode() {
+        document.body.classList.add('mode-resume');
+        document.body.classList.remove('mode-projects');
+        sidebar.classList.remove('collapsed');
+    }
+
+    function dismissIntro(targetId, mode) {
         intro.classList.add('exit');
         document.body.style.overflow = '';
+        if (mode === 'projects') setProjectsMode();
+        else setResumeMode();
         setTimeout(() => {
             intro.style.display = 'none';
             menuBtn.classList.add('show');
@@ -1240,19 +1295,30 @@
         intro.style.display = 'flex';
         requestAnimationFrame(() => intro.classList.remove('exit'));
         document.body.style.overflow = 'hidden';
+        document.body.classList.remove('mode-projects', 'mode-resume');
+        sidebar.classList.remove('collapsed');
         menuBtn.classList.remove('show');
     }
 
-    // Card clicks — navigate to section
+    // Projects card → projects mode (sidebar hidden, collapsible)
     document.querySelectorAll('.icard').forEach(card => {
-        card.addEventListener('click', () => dismissIntro(card.dataset.target));
+        const isProjects = card.dataset.target === 'sec-projects';
+        card.addEventListener('click', () =>
+            dismissIntro(card.dataset.target, isProjects ? 'projects' : 'resume')
+        );
     });
 
-    // Skip — show full resume from top
-    document.getElementById('intro-skip').addEventListener('click', () => dismissIntro(null));
+    // View Full Resume → resume mode (sidebar always visible)
+    document.getElementById('intro-skip').addEventListener('click', () => dismissIntro(null, 'resume'));
 
     // Menu button — re-open intro
     menuBtn.addEventListener('click', showIntro);
+
+    // Sidebar toggle tab (only active in projects mode)
+    tab.addEventListener('click', () => {
+        const nowCollapsed = sidebar.classList.toggle('collapsed');
+        tabIcon.className = nowCollapsed ? 'fa-solid fa-angles-right' : 'fa-solid fa-angles-left';
+    });
 })();
 
 /* ---- PROGRESS ---- */
