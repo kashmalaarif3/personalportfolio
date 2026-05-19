@@ -790,11 +790,28 @@
             /* Sidebar toggle tab: hide the fixed edge tab on mobile */
             .sidebar-tab { display: none; }
 
-            /* Body: single column, sidebar always hidden */
+            /* Body: single column */
             .doc-body { grid-template-columns: 1fr; }
-            .doc-sidebar {
-                display: none !important;
+
+            /* Sidebar: always fully visible on mobile, no collapse */
+            .doc-sidebar,
+            .doc-sidebar.collapsed {
+                display: block !important;
+                width: 100% !important;
+                opacity: 1 !important;
+                padding: 28px 20px !important;
+                border-left: none !important;
+                border-right: none !important;
+                border-top: 4px solid var(--maroon) !important;
+                border-bottom: 1px solid var(--border) !important;
+                transition: none !important;
             }
+            /* Section bodies inside sidebar: always expanded */
+            .sbar-sec.collapsed .sbar-body {
+                max-height: 600px !important;
+                opacity: 1 !important;
+            }
+            .sbar-sec.collapsed .sbar-chevron { transform: none !important; }
 
             /* Main */
             .doc-main { padding: 24px 18px 32px; }
