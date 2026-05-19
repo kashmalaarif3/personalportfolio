@@ -212,44 +212,14 @@
         .hdr-link i { width: 13px; color: rgba(255,100,120,0.8); font-size: 0.72rem; }
 
         /* ===== BODY ===== */
-        .doc-body { display: grid; grid-template-columns: auto 1fr; }
+        .doc-body { display: grid; grid-template-columns: 320px 1fr; }
 
         /* ===== SIDEBAR ===== */
         .doc-sidebar {
-            width: 320px; min-width: 0;
             background: var(--sidebar-bg);
             border-right: 1px solid var(--border);
             border-left: 4px solid var(--maroon);
             padding: 36px 30px;
-            overflow: hidden;
-            transition: width 0.4s cubic-bezier(0.4,0,0.2,1),
-                        padding 0.4s cubic-bezier(0.4,0,0.2,1),
-                        opacity 0.3s ease,
-                        border-width 0.4s ease;
-        }
-        .doc-sidebar.collapsed {
-            width: 0; padding-left: 0; padding-right: 0;
-            border-left-width: 0; border-right-width: 0; opacity: 0;
-        }
-
-        /* ===== SIDEBAR TOGGLE TAB ===== */
-        .sidebar-tab {
-            position: fixed; top: 50%; left: 0; z-index: 100;
-            transform: translateY(-50%);
-            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
-            width: 36px; height: 80px;
-            background: linear-gradient(180deg, var(--maroon), var(--maroon2));
-            border: none; border-radius: 0 12px 12px 0;
-            cursor: pointer; color: #fff;
-            transition: width 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 3px 0 14px rgba(192,21,42,0.35);
-        }
-        .sidebar-tab:hover { width: 44px; box-shadow: 4px 0 20px rgba(192,21,42,0.5); }
-        .sidebar-tab i { font-size: 0.85rem; }
-        .sidebar-tab::after {
-            content: ''; display: block;
-            width: 3px; height: 28px; border-radius: 2px;
-            background: rgba(255,255,255,0.25);
         }
 
         .sb-photo-wrap {
@@ -296,24 +266,8 @@
             text-transform: uppercase; color: var(--maroon);
             margin-bottom: 12px;
             display: flex; align-items: center; gap: 8px;
-            cursor: pointer; user-select: none;
         }
         .sbar-head::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-        .sbar-head .sbar-chevron {
-            font-size: 0.65rem; color: var(--dim); margin-left: 2px;
-            transition: transform 0.3s ease; flex-shrink: 0;
-        }
-        .sbar-sec.collapsed .sbar-chevron { transform: rotate(-90deg); }
-        .sbar-body {
-            overflow: hidden;
-            max-height: 600px;
-            transition: max-height 0.35s ease, opacity 0.3s ease;
-            opacity: 1;
-        }
-        .sbar-sec.collapsed .sbar-body {
-            max-height: 0;
-            opacity: 0;
-        }
 
         .summary-text {
             font-size: 0.8rem; color: var(--muted); line-height: 1.78;
@@ -778,9 +732,6 @@
             .hdr-tagline { font-size: 0.78rem; max-width: 100%; }
             .hdr-contacts { display: none; }
 
-            /* Sidebar toggle tab: hide the fixed edge tab on mobile */
-            .sidebar-tab { display: none; }
-
             /* Body: single column, sidebar always hidden */
             .doc-body { grid-template-columns: 1fr; }
             .doc-sidebar {
@@ -900,7 +851,6 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursor-ring"></div>
 
-<button class="sidebar-tab" id="sidebar-tab"><i class="fa-solid fa-angles-right" id="sidebar-tab-icon"></i></button>
 
 <div class="doc">
 
@@ -930,7 +880,7 @@
     <div class="doc-body">
 
         <!-- SIDEBAR -->
-        <aside class="doc-sidebar collapsed" id="doc-sidebar">
+        <aside class="doc-sidebar">
 
             <!-- Photo -->
             <div class="sb-photo-wrap">
@@ -943,63 +893,57 @@
             </div>
 
             <div class="sbar-sec reveal rd1">
-                <div class="sbar-head">Skills<i class="fa-solid fa-chevron-down sbar-chevron"></i></div>
-                <div class="sbar-body">
-                    <div class="skill-group">
-                        <div class="sg-lbl">Data &amp; ML</div>
-                        <div class="pill-wrap">
-                            <span class="spill">Python</span>
-                            <span class="spill">R</span>
-                            <span class="spill">SQL</span>
-                            <span class="spill">PySpark</span>
-                            <span class="spill">scikit-learn</span>
-                            <span class="spill">Tableau</span>
-                            <span class="spill">Neo4j</span>
-                            <span class="spill">Kafka</span>
-                        </div>
+                <div class="sbar-head">Skills</div>
+                <div class="skill-group">
+                    <div class="sg-lbl">Data &amp; ML</div>
+                    <div class="pill-wrap">
+                        <span class="spill">Python</span>
+                        <span class="spill">R</span>
+                        <span class="spill">SQL</span>
+                        <span class="spill">PySpark</span>
+                        <span class="spill">scikit-learn</span>
+                        <span class="spill">Tableau</span>
+                        <span class="spill">Neo4j</span>
+                        <span class="spill">Kafka</span>
                     </div>
-                    <div class="skill-group" style="margin-top:11px">
-                        <div class="sg-lbl">Product &amp; Design</div>
-                        <div class="pill-wrap">
-                            <span class="spill">Figma</span>
-                            <span class="spill">Jira</span>
-                            <span class="spill">UX Research</span>
-                            <span class="spill">A/B Testing</span>
-                        </div>
+                </div>
+                <div class="skill-group" style="margin-top:11px">
+                    <div class="sg-lbl">Product &amp; Design</div>
+                    <div class="pill-wrap">
+                        <span class="spill">Figma</span>
+                        <span class="spill">Jira</span>
+                        <span class="spill">UX Research</span>
+                        <span class="spill">A/B Testing</span>
                     </div>
-                    <div class="skill-group" style="margin-top:11px">
-                        <div class="sg-lbl">Engineering</div>
-                        <div class="pill-wrap">
-                            <span class="spill">HTML/CSS</span>
-                            <span class="spill">JavaScript</span>
-                            <span class="spill">Java</span>
-                            <span class="spill">PHP</span>
-                            <span class="spill">Postgres</span>
-                        </div>
+                </div>
+                <div class="skill-group" style="margin-top:11px">
+                    <div class="sg-lbl">Engineering</div>
+                    <div class="pill-wrap">
+                        <span class="spill">HTML/CSS</span>
+                        <span class="spill">JavaScript</span>
+                        <span class="spill">Java</span>
+                        <span class="spill">PHP</span>
+                        <span class="spill">Postgres</span>
                     </div>
                 </div>
             </div>
 
             <div class="sbar-sec reveal rd2">
-                <div class="sbar-head">Education<i class="fa-solid fa-chevron-down sbar-chevron"></i></div>
-                <div class="sbar-body">
-                    <div class="edu-school">Cornell University</div>
-                    <div class="edu-deg">B.S. Information Science<br>Data Science &amp; UX Design</div>
-                    <span class="edu-year">Class of 2025</span>
-                </div>
+                <div class="sbar-head">Education</div>
+                <div class="edu-school">Cornell University</div>
+                <div class="edu-deg">B.S. Information Science<br>Data Science &amp; UX Design</div>
+                <span class="edu-year">Class of 2025</span>
             </div>
 
             <div class="sbar-sec reveal rd2">
-                <div class="sbar-head">Coursework<i class="fa-solid fa-chevron-down sbar-chevron"></i></div>
-                <div class="sbar-body">
-                    <div class="course-wrap">
-                        <span class="ctag">Machine Learning</span>
-                        <span class="ctag">Causal Inference</span>
-                        <span class="ctag">Big Messy Data</span>
-                        <span class="ctag">Learning Analytics</span>
-                        <span class="ctag">UX Research</span>
-                        <span class="ctag">Prob &amp; Stats</span>
-                    </div>
+                <div class="sbar-head">Coursework</div>
+                <div class="course-wrap">
+                    <span class="ctag">Machine Learning</span>
+                    <span class="ctag">Causal Inference</span>
+                    <span class="ctag">Big Messy Data</span>
+                    <span class="ctag">Learning Analytics</span>
+                    <span class="ctag">UX Research</span>
+                    <span class="ctag">Prob &amp; Stats</span>
                 </div>
             </div>
 
@@ -1233,25 +1177,7 @@
 </div>
 
 <script>
-/* ---- SIDEBAR TOGGLE ---- */
-(function () {
-    const sidebar = document.getElementById('doc-sidebar');
-    const tab = document.getElementById('sidebar-tab');
-    const icon = document.getElementById('sidebar-tab-icon');
 
-    tab.addEventListener('click', () => {
-        const nowCollapsed = sidebar.classList.toggle('collapsed');
-        icon.className = nowCollapsed ? 'fa-solid fa-angles-right' : 'fa-solid fa-angles-left';
-        tab.classList.toggle('open', !nowCollapsed);
-    });
-})();
-
-/* ---- SIDEBAR SECTION COLLAPSIBLE ---- */
-document.querySelectorAll('.sbar-head').forEach(head => {
-    head.addEventListener('click', () => {
-        head.closest('.sbar-sec').classList.toggle('collapsed');
-    });
-});
 
 /* ---- INTRO NAV ---- */
 (function () {
